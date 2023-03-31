@@ -27,7 +27,7 @@ function renderCountryList(countries) {
 function renderCountryInfo(countries) {
   return countries
     .map(({ flags, name, capital, population, languages }) => {
-      return `<img src='${flags.png}' alt='${flags.alt}'/>
+      return `<img src='${flags.svg}' alt='${flags.alt}'/>
               <h1>${name.common}</h1>
               <ul class="country-info__list">
                 <li class="country-info__item"><p>Capital:</p> ${capital}</li>

@@ -3,9 +3,9 @@ function fetchCountries(name) {
     `https://restcountries.com/v2/name/${name}?fields=name,flags.svg,capital,population,languages`
   ).then(response => {
     if (response.ok) {
-      return response.json();
+      throw new Error(response.status);
     }
-    throw new Error('Error fetching data');
+    return response.json();
   });
 }
 
