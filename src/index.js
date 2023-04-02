@@ -16,7 +16,6 @@ refs.search.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 function onInput(event) {
   let name = event.target.value.trim();
   cleanSearch();
-  console.log(name);
   if (!name) {
     return;
   }
@@ -24,21 +23,19 @@ function onInput(event) {
   fetchCountries(name)
     .then(response => {
       if (response.length > 10) {
-        // cleanSearch();
         Notify.info(
           'Too many matches found. Please enter a more specific name.'
         );
       } else if (response.length === 1) {
-        // refs.list.innerHTML = '';
+        console.log(response);
         return (refs.infoContainer.innerHTML = renderCountryInfo(response));
       } else if (response.length >= 2 && response.length <= 10) {
         refs.list.innerHTML = renderCountryList(response);
       }
-      // refs.infoContainer.innerHTML = '';
     })
-
     .catch(error => {
       cleanSearch();
+      Notify.failure('Oops, there is no country with that name');
     });
 }
 
@@ -53,15 +50,15 @@ function renderCountryList(countries) {
     .join('');
 }
 
-function renderCountryInfo(countries) {
-  return countries
+function renderCountryInfo(country) {
+  return country
     .map(({ flags, name, capital, population, languages }) => {
-      return `<img src='${flags.svg}' alt='${flags.alt}'/>
+      return `<img src='${flags.svg}' alt='${flags.alt}' width = 60px>
               <h1>${name.common}</h1>
               <ul class="country-info__list">
-                <li class="country-info__item"><b>Capital:</b> ${capital}</li>
-                <li class="country-info__item"><b>Population:</b> ${population}</li>
-                <li class="country-info__item"><b>Languages:</b> ${Object.values(
+                <li class="country-info__item"><p>Capital:</p> ${capital}</li>
+                <li class="country-info__item"><p>Population:</p> ${population}</li>
+                <li class="country-info__item"><p>Languages:</p> ${Object.values(
                   languages
                 )}</li>
               </ul>`;

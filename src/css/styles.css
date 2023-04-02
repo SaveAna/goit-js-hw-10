@@ -23,7 +23,7 @@ img {
   margin-bottom: 16px;
 }
 
-.country-list {
+ul {
   list-style: none;
   padding: 0;
 }
@@ -32,9 +32,16 @@ img {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 18px;
   font-weight: 500;
+  font-size: 18px;
 }
 
-/* .country-info__list {
-} */
+.country-info__list p {
+  font-weight: 700;
+  font-size: 18px;
+  display: inline;
+}
+
+.country-info__item {
+  margin-bottom: 10px;
+}
