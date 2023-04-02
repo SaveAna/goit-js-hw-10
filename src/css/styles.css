@@ -13,7 +13,12 @@ body {
 }
 
 img {
-  display: block;
+  display: inline-block;
+}
+
+h1,
+h2 {
+  margin: 0;
 }
 
 #search-box {
@@ -44,4 +49,12 @@ ul {
 
 .country-info__item {
   margin-bottom: 10px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 26px;
+  margin-bottom: 30px;
 }

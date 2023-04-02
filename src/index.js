@@ -34,7 +34,6 @@ function onInput(event) {
       }
     })
     .catch(error => {
-      cleanSearch();
       Notify.failure('Oops, there is no country with that name');
     });
 }
@@ -53,8 +52,10 @@ function renderCountryList(countries) {
 function renderCountryInfo(country) {
   return country
     .map(({ flags, name, capital, population, languages }) => {
-      return `<img src='${flags.svg}' alt='${flags.alt}' width = 60px>
-              <h1>${name.common}</h1>
+      return `<div class="container"> 
+                <img src='${flags.svg}' alt='${flags.alt}' width = 60px>
+                <h1 class="country-info__name">${name.common}</h1>
+              </div>
               <ul class="country-info__list">
                 <li class="country-info__item"><p>Capital:</p> ${capital}</li>
                 <li class="country-info__item"><p>Population:</p> ${population}</li>
